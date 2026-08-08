@@ -29,7 +29,7 @@ nmap -sC -sV -p- TARGET_IP
 - `22/tcp` open ssh — OpenSSH 8.2p1 Ubuntu 4ubuntu0.4
 - `80/tcp` open http — Apache httpd 2.4.48
 
-![nmap](nmappng.png)
+![nmap](Screenshots/nmappng.png)
 
 ### 2. Directory enumeration
 
@@ -43,7 +43,7 @@ gobuster dir -u http://10.64.156.118 -w /usr/share/wordlists/dirbuster/directory
 
 - Discovered the `/assets` directory.
 
-![gobuster](gobuster.png)
+![gobuster](Screenshots/gobuster.png)
 
 ## Application analysis
 
@@ -51,7 +51,7 @@ gobuster dir -u http://10.64.156.118 -w /usr/share/wordlists/dirbuster/directory
 
 I returned to `http://TARGET_IP`, navigated to the login page, and examined the page source for hidden information or client-side logic.
 
-![pagesource](pagesource.png)
+![pagesource](Screenshots/pagesource.png)
 
 **Findings:**
 
@@ -61,7 +61,7 @@ The page source contained a hard-coded username and an obfuscated password compa
 if (a.value=="h3ck3rBoi" & b.value==RevereString"(54321@terceSrepuS"))
 ```
 
-![sourceflag](sourceflag.png)
+![sourceflag](Screenshots/sourceflag.png)
 
 ## Exploitation
 
@@ -79,7 +79,7 @@ echo "54321@terceSrepuS" | rev
 SuperSecret@12345
 ```
 
-![decoded](decoded.png)
+![decoded](Screenshots/decoded.png)
 
 ### 5. Logging in and capturing the flag
 
@@ -89,7 +89,7 @@ Using the discovered credentials, I logged in successfully and retrieved the fla
 flag{edb0be532c540b1a150c3a7e85d2466e}
 ```
 
-![flag](flag.png)
+![flag](Screenshots/flag.png)
 
 ## Summary
 
